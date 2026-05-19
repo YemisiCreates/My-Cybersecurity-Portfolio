@@ -8,6 +8,8 @@ This repository documents my hands-on cybersecurity learning projects.
 - C2 beacon defensive security analysis
 - Caesar cipher cryptography project
 - Canary token generator and deception security lab
+- DNS lookup investigation and reconnaissance project
+- Firewall rule analysis and hardening projects
 
 ## Skills Practiced
 
@@ -18,3 +20,8 @@ This repository documents my hands-on cybersecurity learning projects.
 - Deception security concepts
 - Encoding and cryptography basics
 - Troubleshooting technical errors
+- DNS analysis
+- Firewall security concepts
+- Network defense
+- Linux security tooling
+- Security hardening
