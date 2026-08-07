@@ -18,6 +18,13 @@
 
                  GitHub: Oluwayemisi-Teluwo
 ```
+[![(Cybersecurity Projects](https://img.shields.io/badge/Cybersecurity--Projects-Yemisi%20base64-red?style=flat&logo=github)](https://github.com/YemisiCreates/My-Cybersecurity-Portfolio/tree/main/beginner/base64-project)
+[![Python](https://img.shields.io/badge/Python-3.14+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org)
+[![License: AGPLv3](https://img.shields.io/badge/License-AGPL_v3-purple.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![PyPI](https://img.shields.io/pypi/v/b64tool?color=3775A9&logo=pypi&logoColor=white)](https://pypi.org/project/b64tool/)
+
+
+
 ## What I Did
 I used the b64tool cybersecurity CLI project to:
 - Encode text
