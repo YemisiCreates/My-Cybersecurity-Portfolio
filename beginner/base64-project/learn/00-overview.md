@@ -2,7 +2,7 @@
 
 ## What This Project Does
 
-b64tool is a Python command-line security utility for identifying, encoding,
+Base64tool is a Python command-line security utility for identifying, encoding,
 decoding, and analysing data represented in multiple encoding formats,
 including Base64, Base64URL, Base32, hexadecimal, and URL encoding.
 
