@@ -30,6 +30,12 @@ The main package contains:
 - `peeler.py`
 - `utils.py`
 
+ ### Project Module Structure
+
+![Base64 Tool Module Architecture](../assets/architecture-files.png)
+
+*Figure 1: Python modules that make up the Base64 Security Analysis Tool.*
+
 ---
 
 ## 1. `cli.py` — Command-Line Interface
@@ -138,6 +144,14 @@ For example:
 
 Hex → 80% — detected  
 Base64 → 50% — below threshold
+
+### Detection in Practice
+
+![Encoding Detection Confidence Scores](../assets/Detection-score.png)
+
+*Figure 2: Verbose detection output showing Hex identified at 80% confidence while Base64 scored 50% and remained below the configured 60% threshold.*
+
+This demonstrates how the detector evaluates multiple possible formats instead of assuming the input belongs to a single encoding type.
 
 Because the confidence threshold is 60%, Hex is accepted while the weaker Base64 match is not.
 
