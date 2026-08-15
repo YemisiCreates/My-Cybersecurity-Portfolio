@@ -32,7 +32,7 @@ The main package contains:
 
  ### Project Module Structure
 
-![Base64 Tool Module Architecture](../assets/architecture-files.png)
+![Base64 Tool Module Architecture](../assets/architecture-files-final.png)
 
 *Figure 1: Python modules that make up the Base64 Security Analysis Tool.*
 
@@ -147,7 +147,7 @@ Base64 → 50% — below threshold
 
 ### Detection in Practice
 
-![Encoding Detection Confidence Scores](../assets/Detection-score.png)
+![Encoding Detection Confidence Scores](../assets/Detection-score-final.png)
 
 *Figure 2: Verbose detection output showing Hex identified at 80% confidence while Base64 scored 50% and remained below the configured 60% threshold.*
 
