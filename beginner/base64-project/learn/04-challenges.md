@@ -72,7 +72,7 @@ Unwanted third decoding layer
 
 ### Evidence
 
-![Recursive over-peeling example](../assets/Recursive-peel.png)
+![Recursive over-peeling example](../assets/recursive-peel-github-clean.png)
 
 *Figure 1: Recursive analysis continuing beyond the intended plaintext because the recovered text was classified as another Base64 layer.*
 
