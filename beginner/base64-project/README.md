@@ -64,10 +64,13 @@ This project includes step-by-step learning materials covering security theory, 
 | [01 - Concepts](learn/01-CONCEPTS.md) | Security theory and real-world breaches |
 | [02 - Architecture](learn/02-ARCHITECTURE.md) | System design and data flow |
 | [03 - Implementation](learn/03-IMPLEMENTATION.md) | Code walkthrough |
-| [04 - Challenges](learn/04-CHALLENGES.md) | Extension ideas and exercises |
+| [04 - Challenges](learn/04-CHALLENGES.md) | Detection limitations, false positives and lessons learned|
 
 ## Cybersecurity Relevance
-Attackers often hide malicious payloads using encoding techniques. This project helped me understand how security analysts investigate encoded data.
+
+Attackers can use encoding and multiple transformation layers to obscure commands, URLs, scripts and other payload data.
+
+This project helped me understand how a security analyst can identify suspicious encoding, compare confidence scores, safely decode data and recursively analyse multiple layers. Testing also demonstrated the importance of validating automated detections because confidence-based analysis can produce false positives and unintended over-peeling.
 
 ## License
 
