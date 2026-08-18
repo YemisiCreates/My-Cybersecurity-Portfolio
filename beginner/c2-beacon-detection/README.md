@@ -41,3 +41,31 @@ The project follows a simple detection pipeline:
    The analyzer returns a result such as:
 
    `Periodic beacon detected: True`
+## Security Analysis & Learning Outcomes
+
+Through this project, I explored:
+
+- C2 (Command and Control) communication architecture
+- Periodic beaconing behaviour and network traffic patterns
+- Detection of suspicious timing intervals in network events
+- MITRE ATT&CK concepts associated with Command and Control activity
+- Defensive detection strategies for identifying beacon-like behaviour
+- The effect of jitter on beacon detection and potential false negatives
+- Security trade-offs between detection sensitivity and false positives
+
+## Skills Demonstrated
+
+- Network traffic analysis
+- C2 beacon detection
+- Python-based security automation
+- Detection engineering fundamentals
+- Security event analysis
+- Threat detection and investigation
+- Technical troubleshooting
+- Linux/macOS command-line usage
+- Git and GitHub version control
+- Cybersecurity documentation
+
+## Ethical Use
+
+This project was developed strictly for educational and defensive cybersecurity purposes in a controlled local lab environment.
