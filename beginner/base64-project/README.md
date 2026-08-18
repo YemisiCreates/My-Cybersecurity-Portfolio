@@ -8,15 +8,15 @@
 ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝      ╚═╝       ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝
 ```
 ```ruby
-╔══════════════════════════════════════════════════════════════╗
-║                  BASE64 ENCODER • DECODER                   ║
-║                                                              ║
-║                    Encode • Decode • Convert                ║
-║                                                              ║
-║                     CYBERSECURITY PROJECT                   ║
-╚══════════════════════════════════════════════════════════════╝
+                     ╔══════════════════════════════════════════════════════════════╗
+                     ║                  BASE64 ENCODER • DECODER                   ║
+                     ║                                                              ║
+                     ║                    Encode • Decode • Convert                ║
+                     ║                                                              ║
+                     ║                     CYBERSECURITY PROJECT                   ║
+                     ╚══════════════════════════════════════════════════════════════╝
 
-                 GitHub: Oluwayemisi-Teluwo
+                                      GitHub: Oluwayemisi-Teluwo
 ```
 [![(Cybersecurity Projects](https://img.shields.io/badge/Cybersecurity--Projects-Yemisi%20base64-red?style=flat&logo=github)](https://github.com/YemisiCreates/My-Cybersecurity-Portfolio/tree/main/beginner/base64-project)
 [![Python](https://img.shields.io/badge/Python-3.14+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org)
