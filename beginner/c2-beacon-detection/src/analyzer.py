@@ -27,7 +27,7 @@ def calculate_intervals(events):
         intervals.append(interval)
 
     return intervals
-def detect_periodic_beacon(intervals, tolerance=2.0):
+def detect_periodic_beacon(intervals, tolerance=3.5):
     if len(intervals) < 3:
         return False
 
