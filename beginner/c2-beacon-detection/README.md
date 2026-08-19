@@ -198,4 +198,104 @@ This demonstrates how suspicious beacon-like behaviour can be identified using c
 
 > **Analyst Note:** Periodic communication alone does not confirm malicious C2 activity. In a real SOC environment, an alert would require additional investigation and correlation with endpoint, DNS, process, authentication, and other network telemetry.
 
+## SOC Investigation Workflow
+
+A periodic beacon detection should be treated as a **starting point for investigation**, not immediate confirmation of compromise.
+
+If this detection generated an alert in a SOC environment, I would follow the investigation process below:
+
+### 1. Triage the Alert
+
+Review the detection details to understand:
+
+- Source IP / affected host
+- Destination IP
+- Destination port
+- Connection frequency
+- Number of repeated connections
+- Time period over which the activity occurred
+- Detection confidence and configured tolerance
+
+**Goal:** Determine what triggered the alert and whether the behaviour warrants further investigation.
+
+### 2. Validate the Network Activity
+
+Examine additional network telemetry such as:
+
+- Firewall logs
+- Proxy logs
+- DNS queries
+- NetFlow/network flow data
+- IDS/IPS alerts
+
+Check whether the destination is expected for the affected system and whether similar communication occurs elsewhere in the environment.
+
+### 3. Enrich the Destination
+
+Investigate the destination IP or domain using available threat-intelligence sources.
+
+Look for:
+
+- Reputation
+- Previous malicious activity
+- Domain age
+- Related indicators of compromise (IOCs)
+- Known malware or C2 infrastructure associations
+
+A clean reputation would **not automatically make the activity benign**, particularly when behavioural evidence remains suspicious.
+
+### 4. Correlate With Endpoint Activity
+
+Review EDR or endpoint telemetry from the source host.
+
+Investigate:
+
+- Which process initiated the connection?
+- Is the process expected?
+- What user account executed it?
+- Are there suspicious parent/child process relationships?
+- Are there persistence mechanisms?
+- Are there unusual files or command-line activity?
+
+This helps connect the **network behaviour** to activity occurring on the endpoint.
+
+### 5. Scope the Activity
+
+Determine whether the behaviour affects only one host or multiple systems.
+
+Search for:
+
+- Other hosts contacting the same destination
+- Similar beacon intervals
+- Related domains or IP addresses
+- Similar endpoint processes
+- Additional alerts associated with the same host or user
+
+### 6. Determine the Disposition
+
+Based on the collected evidence, classify the alert appropriately.
+
+Possible outcomes include:
+
+- **True Positive** — malicious C2 activity is supported by additional evidence.
+- **False Positive** — legitimate software or expected network behaviour explains the periodic communication.
+- **Suspicious / Inconclusive** — additional investigation or escalation is required.
+
+### 7. Respond and Document
+
+If malicious activity is confirmed, follow the organisation's incident-response procedures, which may include host isolation, blocking malicious infrastructure, preserving evidence, and escalation.
+
+Document:
+
+- Detection details
+- Investigation queries
+- Evidence reviewed
+- Timeline
+- Indicators discovered
+- Analyst assessment
+- Actions taken
+- Final disposition
+
+> **SOC Analyst Principle:** A beacon detection is an indicator for investigation. Periodicity provides behavioural evidence, but additional network and endpoint context is required before determining that Command-and-Control activity has occurred.
+
 
