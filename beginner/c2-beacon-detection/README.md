@@ -24,23 +24,39 @@
 
 **This is a project overview — detection logic, analysis, evidence, and technical walkthroughs are documented below.**
 
-A defensive cybersecurity project that simulates Command-and-Control (C2) beacon traffic and detects periodic network communication that may indicate beaconing behaviour.
+## Overview
 
-This project focuses on the SOC analyst perspective: generating safe synthetic telemetry, analysing connection timing, identifying periodic communication, testing the impact of jitter, and improving detection logic to reduce false negatives.
-
-## Project Goal
-
-The goal of this project is to understand how C2 beaconing can appear in network telemetry and how a SOC analyst can detect suspicious periodic communication without relying only on known malicious indicators.
+The C2 Beacon Detector is a defensive network-analysis project that identifies periodic outbound communication patterns that may be associated with Command-and-Control (C2) beaconing.
 
 The project currently:
 
-- Generates synthetic network events
-- Simulates repeated outbound connections
-- Calculates connection intervals
-- Detects highly periodic communication
-- Introduces timing jitter
-- Demonstrates how jitter can cause a false negative
-- Adjusts detection tolerance to recognise jittered beaconing
+- Generates synthetic network connection telemetry for safe analysis.
+- Simulates repeated outbound communication between a source and destination.
+- Calculates the time interval between consecutive connections.
+- Detects highly periodic communication patterns.
+- Introduces **jitter** to simulate variation in beacon timing.
+- Tests how jitter affects detection accuracy.
+- Demonstrates how overly strict detection thresholds can create **false negatives**.
+- Allows detection sensitivity to be adjusted using a timing tolerance.
+
+### Detection Flow
+
+`Simulated Traffic → Network Events → Interval Analysis → Periodicity Check → Detection Result`
+
+Example:
+
+```ruby
+Source:       192.168.1.25
+Destination:  203.0.113.50
+Port:         443
+
+30 sec → 30 sec → 30 sec → 30 sec
+                         ↓
+              Periodic pattern identified
+                         ↓
+          Periodic beacon detected: True
+```
+
 
 ## How It Works
 
@@ -64,7 +80,10 @@ The project follows a simple detection pipeline:
 6. **Detection Result**  
    The analyzer returns a result such as:
 
-   `Periodic beacon detected: True`
+```text
+Periodic beacon detected: True
+```
+
 ## Security Analysis & Learning Outcomes
 
 Through this project, I explored:
