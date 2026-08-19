@@ -4,6 +4,7 @@ from pathlib import Path
 
 INPUT_FILE = Path("data/network_events.csv")
 
+
 def load_events():
     events = []
 
@@ -16,6 +17,8 @@ def load_events():
             events.append(row)
 
     return events
+
+
 def calculate_intervals(events):
     intervals = []
 
@@ -27,9 +30,11 @@ def calculate_intervals(events):
         intervals.append(interval)
 
     return intervals
+
+
 def detect_periodic_beacon(intervals, tolerance=3.5):
     if len(intervals) < 3:
-        return False
+        return False, 0.0, 0.0
 
     average_interval = sum(intervals) / len(intervals)
 
@@ -40,13 +45,18 @@ def detect_periodic_beacon(intervals, tolerance=3.5):
     ]
 
     consistency = len(matching_intervals) / len(intervals)
+    detected = consistency >= 0.80
 
-    return consistency >= 0.80
+    return detected, consistency, average_interval
+
+
 if __name__ == "__main__":
     events = load_events()
     intervals = calculate_intervals(events)
-    detected = detect_periodic_beacon(intervals)
+    detected, consistency, average_interval = detect_periodic_beacon(intervals)
 
     print(f"Loaded {len(events)} network events")
     print(f"Connection intervals: {intervals}")
+    print(f"Average interval: {average_interval:.2f} seconds")
+    print(f"Interval consistency: {consistency:.2%}")
     print(f"Periodic beacon detected: {detected}")
