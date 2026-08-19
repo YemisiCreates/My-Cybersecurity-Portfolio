@@ -36,7 +36,21 @@ The project focuses on behavioural detection rather than relying solely on known
 
 ### Detection Flow
 
-`Simulated Traffic → Network Events → Interval Analysis → Periodicity Check → Detection Result`
+                Simulated Traffic
+                         ↓
+                  Network Events
+                         ↓
+                 Interval Analysis
+                         ↓
+               Periodicity Detection
+                         ↓
+                   Risk Scoring
+                         ↓
+               Severity Classification
+                         ↓
+                 SOC Alert Generation
+                         ↓
+                Analyst Investigation
 
 Example:
 
@@ -49,7 +63,11 @@ Port:         443
                          ↓
               Periodic pattern identified
                          ↓
-          Periodic beacon detected: True
+                 Risk Score: 100/100
+                         ↓
+                  Severity: High
+                         ↓
+              C2 Detection Alert
 ```
 
 
