@@ -172,4 +172,30 @@ The detection tolerance can therefore be adjusted to balance:
 
 `Detection Sensitivity ↔ False Positives ↔ False Negatives'
 
+## MITRE ATT&CK Mapping
+
+This project demonstrates detection concepts associated with the **Command and Control (C2)** stage of adversary activity.
+
+| ATT&CK | Mapping | Relevance to This Project |
+|---|---|---|
+| **TA0011** | Command and Control | The project analyses repeated outbound network communication that may indicate C2 beaconing behaviour. |
+| **T1071** | Application Layer Protocol | The detection methodology focuses on identifying suspicious recurring communication patterns that may be associated with application-layer C2 traffic. |
+
+### Detection Perspective
+
+Rather than relying solely on known malicious IP addresses or signatures, this project uses **behaviour-based detection**.
+
+The detector examines:
+
+- repeated outbound connections
+- source and destination relationships
+- connection timestamps
+- communication intervals
+- periodicity
+- timing variation (jitter)
+
+This demonstrates how suspicious beacon-like behaviour can be identified using communication patterns even when a known malicious indicator is not available.
+
+> **Analyst Note:** Periodic communication alone does not confirm malicious C2 activity. In a real SOC environment, an alert would require additional investigation and correlation with endpoint, DNS, process, authentication, and other network telemetry.
+
 
