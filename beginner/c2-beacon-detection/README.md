@@ -112,3 +112,64 @@ Through this project, I explored:
 ## Ethical Use
 
 This project was developed strictly for educational and defensive cybersecurity purposes in a controlled local lab environment.
+
+## Detection Evidence
+
+### 1. Periodic Beacon Detection
+
+![Periodic Beacon Detected](evidence/01-periodic-beacon-detected.png)
+
+**Analyst observation:**  
+The detector identified repeated network connections occurring at consistent intervals, resulting in `Periodic beacon detected: True`.
+
+**Security Relevance:**  
+
+Consistent outbound communication intervals can be an indicator of automated C2 beaconing. In a real SOC investigation, this behaviour would warrant further analysis of the source host, destination IP, process activity, DNS activity, and surrounding network telemetry.
+
+---
+
+### 2. Connection Interval Analysis
+
+![Interval Analysis](evidence/02-interval-analysis.png)
+
+**Analyst Observation:**  
+
+The connection timestamps were converted into intervals between consecutive network events. Similar intervals indicate that the communication is occurring on a predictable schedule.
+
+**Security Relevance:**  
+
+Interval analysis helps analysts distinguish potentially automated beaconing behaviour from less predictable user-generated network traffic.
+
+---
+
+### 3. Simulated Network Events
+
+![Simulated Network Events](evidence/03-simulated-network-events.png)
+
+**Analyst Observation:**  
+
+Synthetic network telemetry was generated to provide a safe dataset containing repeated outbound connection events for analysis.
+
+**Security Relevance:**  
+
+Using synthetic telemetry allows detection logic to be developed and tested in a controlled environment without generating real malicious C2 traffic.
+
+---
+
+### 4. Jittered Traffic — No Beacon Detected
+
+![Jittered Traffic No Beacon](evidence/04-jittered-traffic-no-beacon.png)
+
+**Analyst Observation:**  
+
+Timing variation (jitter) was introduced between network connections. The additional variation caused the communication pattern to fall outside the detector's configured tolerance.
+
+**Security Relevance:**  
+
+This demonstrates an important detection-engineering limitation: overly strict thresholds can miss beacon-like behaviour when communication intervals vary, creating a potential **false negative**.
+
+The detection tolerance can therefore be adjusted to balance:
+
+`Detection Sensitivity ↔ False Positives ↔ False Negatives'
+
+
