@@ -72,32 +72,54 @@ Port:         443
 
 
 ## How It Works
+The project uses five main Python components:
+1. **Traffic Simulation - 'simulator.py'**
+   Generates synthetic network-event records representing repeated outbound communication. It supports configurable timing intervals and jitter.
+2. **Interval Analysis - 'analyser.py'**
+   Loads the synthetic telemetry, calculate the time between connections, measures interval consistency, and determines whether the communication is periodic.
+3. **Risk Scoring - 'scoring.py'**
+   Converts the detection result and interval consistency into a simple lab risk score from 0-100 and assigns a severity level.
+4. **SOC Alert Generation - 'alert.py'**
+   Formats the detection result into a SOC-style alert containing the source, destination, risk score, severity, average interval, and consistency.
+5. **Pipeline Integration - 'main.py'**
+   Connects the analyser, scoring, and alerting components so the full detection workflow can be run from one command.
 
-The project follows a simple detection pipeline:
-
-1. **Traffic Simulation**  
-   `simulator.py` generates synthetic outbound network connections representing C2-style beacon traffic.
-
-2. **Telemetry Generation**  
-   Each event contains a timestamp, source IP, destination IP, and destination port.
-
-3. **Interval Analysis**  
-   `analyzer.py` calculates the time difference between consecutive network connections.
-
-4. **Periodicity Detection**  
-   The detector compares the connection intervals to determine whether communication is occurring at a consistent pattern.
-
-5. **Jitter Testing**  
-   Random timing variation is introduced to simulate more realistic beacon behaviour and test whether the detector can still identify the pattern.
-
-6. **Detection Result**  
-   The analyzer returns a result such as:
-
+### End-to-End Workflow
 ```text
-Periodic beacon detected: True
+            Synthetic Network Telemetry
+                         ↓
+                    analyzer.py
+                         ↓
+               Periodicity Detection
+                         ↓
+                     scoring.py
+                         ↓
+              Risk Score + Severity
+                         ↓
+                      alert.py
+                         ↓
+                  SOC-Style Alert
 ```
 
+ Run the full analysis pipeline with
+```bash
+python3 -m src.main
+```
 
+Example output:
+
+```text
+=== C2 BEACON DETECTION ALERT ===
+Detection: Possible C2 Beaconing
+Detected: True
+Risk Score: 100/100
+Severity: High
+Source: 192.168.1.25
+Destination: 203.0.113.50:443
+Average Interval: 30.14 seconds
+Interval Consistency: 100.0%
+```
+              
 ## Detection Evidence
 
 ### 1. Periodic Beacon Detection
