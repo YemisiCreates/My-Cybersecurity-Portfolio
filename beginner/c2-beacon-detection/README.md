@@ -24,20 +24,15 @@
 
 **This is a project overview — detection logic, analysis, evidence, and technical walkthroughs are documented below.**
 
+
 ## Overview
 
-The C2 Beacon Detector is a defensive network-analysis project that identifies periodic outbound communication patterns that may be associated with Command-and-Control (C2) beaconing.
+The C2 Beacon Detector is a Python-based defensive network-analysis project designed to identify periodic outbound communication patterns that may indicate Command-and-Control (C2) beaconing.
 
-The project currently:
+The project generates synthetic network telemetry and analyses connection timing to identify recurring communication patterns. It also introduces jitter to demonstrate how timing variation can affect detection accuracy and produce false negatives when detection thresholds are too strict.
 
-- Generates synthetic network connection telemetry for safe analysis.
-- Simulates repeated outbound communication between a source and destination.
-- Calculates the time interval between consecutive connections.
-- Detects highly periodic communication patterns.
-- Introduces **jitter** to simulate variation in beacon timing.
-- Tests how jitter affects detection accuracy.
-- Demonstrates how overly strict detection thresholds can create **false negatives**.
-- Allows detection sensitivity to be adjusted using a timing tolerance.
+The project focuses on behavioural detection rather than relying solely on known malicious IP addresses, domains, or signatures.
+
 
 ### Detection Flow
 
@@ -84,34 +79,6 @@ The project follows a simple detection pipeline:
 Periodic beacon detected: True
 ```
 
-## Security Analysis & Learning Outcomes
-
-Through this project, I explored:
-
-- C2 (Command and Control) communication architecture
-- Periodic beaconing behaviour and network traffic patterns
-- Detection of suspicious timing intervals in network events
-- MITRE ATT&CK concepts associated with Command and Control activity
-- Defensive detection strategies for identifying beacon-like behaviour
-- The effect of jitter on beacon detection and potential false negatives
-- Security trade-offs between detection sensitivity and false positives
-
-## Skills Demonstrated
-
-- Network traffic analysis
-- C2 beacon detection
-- Python-based security automation
-- Detection engineering fundamentals
-- Security event analysis
-- Threat detection and investigation
-- Technical troubleshooting
-- Linux/macOS command-line usage
-- Git and GitHub version control
-- Cybersecurity documentation
-
-## Ethical Use
-
-This project was developed strictly for educational and defensive cybersecurity purposes in a controlled local lab environment.
 
 ## Detection Evidence
 
@@ -164,6 +131,7 @@ Using synthetic telemetry allows detection logic to be developed and tested in a
 
 Timing variation (jitter) was introduced between network connections. The additional variation caused the communication pattern to fall outside the detector's configured tolerance.
 
+
 **Security Relevance:**  
 
 This demonstrates an important detection-engineering limitation: overly strict thresholds can miss beacon-like behaviour when communication intervals vary, creating a potential **false negative**.
@@ -171,6 +139,22 @@ This demonstrates an important detection-engineering limitation: overly strict t
 The detection tolerance can therefore be adjusted to balance:
 
 `Detection Sensitivity ↔ False Positives ↔ False Negatives'
+
+
+## Detection Engineering Analysis
+
+The testing demonstrated that periodicity can be useful for identifying beacon-like network behaviour, but detection accuracy depends heavily on the configured timing tolerance.
+
+A strict tolerance successfully identifies highly regular communication but may fail when jitter is introduced, increasing the risk of false negatives. Increasing the tolerance may improve detection of jittered beaconing but can also increase false positives from legitimate periodic traffic.
+
+This creates an important detection-engineering trade-off:
+
+`Higher Sensitivity ↔ More False Positives`
+
+`Lower Sensitivity ↔ More False Negatives`
+
+For this reason, periodicity should be treated as one behavioural signal rather than standalone proof of malicious C2 activity.
+
 
 ## MITRE ATT&CK Mapping
 
@@ -180,6 +164,7 @@ This project demonstrates detection concepts associated with the **Command and C
 |---|---|---|
 | **TA0011** | Command and Control | The project analyses repeated outbound network communication that may indicate C2 beaconing behaviour. |
 | **T1071** | Application Layer Protocol | The detection methodology focuses on identifying suspicious recurring communication patterns that may be associated with application-layer C2 traffic. |
+
 
 ### Detection Perspective
 
@@ -197,6 +182,7 @@ The detector examines:
 This demonstrates how suspicious beacon-like behaviour can be identified using communication patterns even when a known malicious indicator is not available.
 
 > **Analyst Note:** Periodic communication alone does not confirm malicious C2 activity. In a real SOC environment, an alert would require additional investigation and correlation with endpoint, DNS, process, authentication, and other network telemetry.
+
 
 ## SOC Investigation Workflow
 
@@ -297,5 +283,25 @@ Document:
 - Final disposition
 
 > **SOC Analyst Principle:** A beacon detection is an indicator for investigation. Periodicity provides behavioural evidence, but additional network and endpoint context is required before determining that Command-and-Control activity has occurred.
+
+
+## Skills Demonstrated
+
+- Network traffic analysis
+- C2 beacon detection
+- Python security automation
+- Detection engineering
+- Behaviour-based threat detection
+- Security event investigation
+- MITRE ATT&CK mapping
+- SOC alert triage methodology
+- Linux/macOS command-line usage
+- Git and GitHub version control
+- Technical cybersecurity documentation
+
+
+## Ethical Use
+
+This project was developed strictly for educational and defensive cybersecurity purposes in a controlled local lab environment.
 
 
