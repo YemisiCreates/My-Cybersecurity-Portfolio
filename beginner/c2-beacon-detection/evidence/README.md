@@ -27,3 +27,23 @@ Demonstrates how variation in connection timing can reduce periodicity
 and prevent the traffic from meeting the beacon-detection threshold.
 
 ![Jittered Traffic — No Beacon](04-jittered-traffic-no-beacon.png)
+
+### 5. SOC-Style C2 Detection Alert
+
+![SOC-Style C2 Detection Alert](evidence/05-soc-c2-detection-alert.png)
+
+**Analyst Observation:**  
+
+The completed detection pipeline identified periodic outbound communication and generated a structured alert containing the affected source, destination, risk score, severity, average connection interval, and interval consistency.
+
+Example detection result:
+
+```text
+Detection: Possible C2 Beaconing
+Detected: True
+Risk Score: 100/100
+Severity: High
+Source: 192.168.1.25
+Destination: 203.0.113.50:443
+Average Interval: 30.14 seconds
+Interval Consistency: 100.0%
