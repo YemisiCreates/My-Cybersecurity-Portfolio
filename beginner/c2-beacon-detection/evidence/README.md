@@ -30,7 +30,7 @@ and prevent the traffic from meeting the beacon-detection threshold.
 
 ### 5. SOC-Style C2 Detection Alert
 
-![SOC-Style C2 Detection Alert](evidence/05-soc-c2-detection-alert.png)
+![SOC-Style C2 Detection Alert](05-soc-c2-detection-alert.png)
 
 **Analyst Observation:**  
 
