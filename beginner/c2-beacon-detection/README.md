@@ -171,6 +171,21 @@ Using synthetic telemetry allows detection logic to be developed and tested in a
 
 Timing variation (jitter) was introduced between network connections. The additional variation caused the communication pattern to fall outside the detector's configured tolerance.
 
+---
+
+### 5. SOC-Style C2 Detection Alert
+
+![SOC-Style C2 Detection Alert](evidence/05-soc-c2-detection-alert.png)
+
+**Analyst Observation:**  
+
+The completed detection pipeline identified periodic outbound communication and generated a structured alert containing the affected source, destination, risk score, severity, average connection interval, and interval consistency.
+
+**Security Relevance:**  
+
+Transforming detection results into a structured alert makes the output more useful for SOC triage. Instead of receiving only a `True` or `False` result, an analyst receives contextual information that can help determine the severity of the detection and guide further investigation.
+
+> **Analyst Note:** The `High` severity represents the project's lab-based scoring logic and does not independently confirm malicious activity.
 
 **Security Relevance:**  
 
