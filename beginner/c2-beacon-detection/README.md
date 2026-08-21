@@ -210,6 +210,15 @@ This creates an important detection-engineering trade-off:
 
 For this reason, periodicity should be treated as one behavioural signal rather than standalone proof of malicious C2 activity.
 
+### Alert Scoring and Prioritisation
+
+The project extends the periodicity detection by converting the detection result and interval consistency into a numerical risk score and severity classification.
+
+This provides an additional prioritisation layer for the analyst. Highly consistent periodic behaviour produces a higher score, while weaker or absent periodicity produces a lower score.
+
+The scoring model is intentionally simple and designed for this controlled lab environment. In a production SOC, alert severity should incorporate additional contextual signals such as endpoint activity, threat intelligence, asset criticality, destination reputation, process behaviour, and other correlated security events.
+
+Therefore, the risk score should be interpreted as an **alert-prioritisation mechanism**, rather than a probability that malicious C2 activity has occurred.
 
 ## MITRE ATT&CK Mapping
 
