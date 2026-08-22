@@ -369,6 +369,133 @@ Document:
 - Git and GitHub version control
 - Technical cybersecurity documentation
 
+## Alert Logging
+
+The detector includes JSON-based alert logging to preserve detection results for later analysis.
+
+When the detection pipeline identifies beacon-like behaviour, the alert can be written to:
+
+```text
+logs/alerts.json
+```
+
+Each alert contains structured fields such as:
+
+- Timestamp
+- Detection name
+- Detection status
+- Risk score
+- Severity
+- Source IP
+- Destination IP and port
+- Average connection interval
+- Interval consistency
+
+Example alert:
+
+```json
+{
+  "timestamp": "2026-08-22T20:55:09.976486",
+  "detection": "Possible C2 Beaconing",
+  "detected": true,
+  "risk_score": 100,
+  "severity": "High",
+  "source_ip": "192.168.1.25",
+  "destination_ip": "203.0.113.50",
+  "destination_port": 443,
+  "average_interval_seconds": 30.14,
+  "interval_consistency_percent": 100.0
+}
+```
+
+### Security Relevance
+
+Structured alert logging makes detection results easier to preserve, review, and process programmatically. In a SOC environment, structured security events may be forwarded to monitoring or SIEM platforms for correlation with other telemetry.
+
+The generated `logs/` directory is excluded from version control through `.gitignore` so runtime alert data is not committed to the repository.
+
+
+## Automated Testing
+
+The project uses `pytest` to validate core detection and logging behaviour.
+## Alert Logging
+
+The detector includes JSON-based alert logging to preserve detection results for later analysis.
+
+When the detection pipeline identifies beacon-like behaviour, the alert can be written to:
+
+```text
+logs/alerts.json
+```
+
+Each alert contains structured fields such as:
+
+- Timestamp
+- Detection name
+- Detection status
+- Risk score
+- Severity
+- Source IP
+- Destination IP and port
+- Average connection interval
+- Interval consistency
+
+Example alert:
+
+```json
+{
+  "timestamp": "2026-08-22T20:55:09.976486",
+  "detection": "Possible C2 Beaconing",
+  "detected": true,
+  "risk_score": 100,
+  "severity": "High",
+  "source_ip": "192.168.1.25",
+  "destination_ip": "203.0.113.50",
+  "destination_port": 443,
+  "average_interval_seconds": 30.14,
+  "interval_consistency_percent": 100.0
+}
+```
+
+### Security Relevance
+
+Structured alert logging makes detection results easier to preserve, review, and process programmatically. In a SOC environment, structured security events may be forwarded to monitoring or SIEM platforms for correlation with other telemetry.
+
+The generated `logs/` directory is excluded from version control through `.gitignore` so runtime alert data is not committed to the repository.
+
+
+## Automated Testing
+
+The project uses `pytest` to validate core detection and logging behaviour.
+Test files:
+
+- [`tests/test_detector.py`](tests/test_detector.py) — validates beacon detection, irregular traffic handling, insufficient data, risk scoring, and severity classification.
+- [`tests/test_logger.py`](tests/test_logger.py) — validates that structured detection alerts are successfully written to JSON.
+
+
+The automated tests currently verify:
+
+- Regular intervals trigger beacon detection
+- Irregular intervals do not trigger beacon detection
+- Insufficient interval data does not trigger detection
+- High interval consistency produces a high-severity result
+- No detection produces a zero risk score
+- Detection alerts can be written successfully as JSON
+
+Run the complete test suite with:
+
+```bash
+python3 -m pytest tests/ -v
+```
+
+Current test result:
+
+```text
+6 passed
+```
+
+Automated testing helps ensure that changes to the project do not unintentionally break existing detection, scoring, or logging behaviour.
+
 
 ## Ethical Use
 
