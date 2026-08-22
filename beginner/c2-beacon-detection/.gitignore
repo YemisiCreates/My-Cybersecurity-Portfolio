@@ -2,3 +2,16 @@ __pycache__/
 *.pyc
 .DS_Store
 data/network_events.csv
+
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Pytest cache
+.pytest_cache/
+
+# Generated C2 alert logs
+logs/

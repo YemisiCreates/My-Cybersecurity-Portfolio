@@ -1,3 +1,4 @@
+from src.logger import save_alert
 from src.analyzer import load_events, calculate_intervals, detect_periodic_beacon
 from src.scoring import calculate_risk_score, get_severity
 from src.alert import create_alert, print_alert
@@ -29,7 +30,7 @@ def main():
     )
 
     print_alert(alert)
-
+    save_alert(alert)
 
 if __name__ == "__main__":
     main()
