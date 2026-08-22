@@ -226,9 +226,15 @@ This project demonstrates detection concepts associated with the **Command and C
 
 | ATT&CK | Mapping | Relevance to This Project |
 |---|---|---|
-| **TA0011** | Command and Control | The project analyses repeated outbound network communication that may indicate C2 beaconing behaviour. |
-| **T1071** | Application Layer Protocol | The detection methodology focuses on identifying suspicious recurring communication patterns that may be associated with application-layer C2 traffic. |
+| **TA0011** | Command and Control | The project models and analyses repeated outbound communication patterns that may indicate C2 beaconing behaviour. |
 
+### Mapping Scope
+
+The current implementation focuses on **behavioural indicators of potential C2 communication**, particularly recurring outbound connections and timing periodicity.
+
+The project does not currently inspect or validate specific application-layer protocols such as HTTP, HTTPS, or DNS. Therefore, a specific application-layer ATT&CK technique is not asserted solely because the simulated traffic uses destination port 443.
+
+Future development could extend the detector with protocol-aware telemetry, allowing more specific ATT&CK technique mapping where supported by the observed behaviour.
 
 ### Detection Perspective
 
