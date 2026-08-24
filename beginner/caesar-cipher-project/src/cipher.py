@@ -1,4 +1,4 @@
-from src.analysis import english_score
+from src.analysis import english_score, frequency_score
 
 def caesar_cipher(text, shift):
     result = ""
@@ -36,8 +36,11 @@ def ranked_brute_force(text):
 
     ranked = sorted(
         results,
-        key=lambda item: english_score(item[1]),
-        reverse=True,
+        key=lambda item:  (
+            -english_score(item[1]),
+             frequency_score(item[1]),
+        ),      
+  
     )
 
     return ranked

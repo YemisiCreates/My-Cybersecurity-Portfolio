@@ -1,5 +1,5 @@
 from src.cipher import encrypt, decrypt, brute_force, ranked_brute_force
-
+from src.analysis import english_score, frequency_score
 
 
 def test_encrypt_with_key_three():
@@ -47,3 +47,15 @@ def test_ranked_brute_force_returns_all_keys():
     results = ranked_brute_force("KHOOR ZRUOG")
 
     assert len(results) == 26
+
+def test_english_score_prefers_english_text():
+    english = english_score("HELLO WORLD")
+    nonsense = english_score("XQZJK VBNMP")
+
+    assert english > nonsense
+
+
+def test_frequency_score_returns_number():
+    score = frequency_score("HELLO WORLD")
+
+    assert isinstance(score, (int, float))
