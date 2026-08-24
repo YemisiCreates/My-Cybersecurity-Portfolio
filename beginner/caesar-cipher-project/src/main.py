@@ -52,6 +52,16 @@ def main():
     "text",
     help="Ciphertext to analyse"
     )
+
+    file_parser = subparsers.add_parser(
+    "analyse-file",
+    help="Analyse Caesar cipher ciphertext from a file"
+    )
+
+    file_parser.add_argument(
+    "file",
+    help="Path to ciphertext file"
+    )
     args = parser.parse_args()
 
     if args.command == "encrypt":
@@ -73,6 +83,27 @@ def main():
 
         print("\n=== Caesar Cipher Cryptanalysis ===")
         print(f"Ciphertext: {args.text}")
+        print("Keys analysed: 26")
+        print("\nTop 5 ranked candidates:")
+        print("-" * 50)
+
+        for rank, (key, plaintext) in enumerate(results[:5], start=1):
+            print(f"{rank}. Key {key:2}: {plaintext}")
+
+        print("-" * 50)
+        print(f"Most likely plaintext: {best_plaintext}")
+        print(f"Recovered key: {best_key}")
+
+    elif args.command == "analyse-file":
+        with open(args.file, "r") as file:
+            ciphertext = file.read().strip()
+
+        results = ranked_brute_force(ciphertext)
+        best_key, best_plaintext = results[0]
+
+        print("\n=== Caesar Cipher File Analysis ===")
+        print(f"File: {args.file}")
+        print(f"Ciphertext: {ciphertext}")
         print("Keys analysed: 26")
         print("\nTop 5 ranked candidates:")
         print("-" * 50)
