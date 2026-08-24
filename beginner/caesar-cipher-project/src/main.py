@@ -69,10 +69,20 @@ def main():
     elif args.command == "ranked-brute-force":
         results = ranked_brute_force(args.text)
 
-        print("Most likely plaintext candidates:\n")
+        best_key, best_plaintext = results[0]
 
-        for key, plaintext in results[:5]:
-            print(f"Key {key:2}: {plaintext}")
+        print("\n=== Caesar Cipher Cryptanalysis ===")
+        print(f"Ciphertext: {args.text}")
+        print("Keys analysed: 26")
+        print("\nTop 5 ranked candidates:")
+        print("-" * 50)
+
+        for rank, (key, plaintext) in enumerate(results[:5], start=1):
+            print(f"{rank}. Key {key:2}: {plaintext}")
+
+        print("-" * 50)
+        print(f"Most likely plaintext: {best_plaintext}")
+        print(f"Recovered key: {best_key}")
 
     else:
         parser.print_help()
