@@ -1,4 +1,31 @@
-# Caesar Cipher Security Analysis Tool
+```text
+ ██████╗ █████╗ ███████╗███████╗ █████╗ ██████╗      ██████╗██╗██████╗ ██╗  ██╗███████╗██████╗ 
+██╔════╝██╔══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗    ██╔════╝██║██╔══██╗██║  ██║██╔════╝██╔══██╗
+██║     ███████║█████╗  ███████╗███████║██████╔╝    ██║     ██║██████╔╝███████║█████╗  ██████╔╝
+██║     ██╔══██║██╔══╝  ╚════██║██╔══██║██╔══██╗    ██║     ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗
+╚██████╗██║  ██║███████╗███████║██║  ██║██║  ██║    ╚██████╗██║██║     ██║  ██║███████╗██║  ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝     ╚═════╝╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+```
+
+```ruby
+                     ╔══════════════════════════════════════════════════════════════╗
+                     ║              CAESAR CIPHER SECURITY ANALYSIS                ║
+                     ║                                                              ║
+                     ║             Encrypt • Decrypt • Crack • Analyse             ║
+                     ║                                                              ║
+                     ║                     CYBERSECURITY PROJECT                    ║
+                     ╚══════════════════════════════════════════════════════════════╝
+
+                                      GitHub: Oluwayemisi-Teluwo
+```
+
+[![Cybersecurity Projects](https://img.shields.io/badge/Cybersecurity--Projects-Caesar%20Cipher-red?style=flat&logo=github)](https://github.com/YemisiCreates/My-Cybersecurity-Portfolio/tree/main/beginner/caesar-cipher-project)
+[![Python](https://img.shields.io/badge/Python-3.14+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org)
+[![Tests](https://img.shields.io/badge/Tests-11%20Passed-brightgreen?style=flat&logo=pytest)](#testing)
+[![Cryptanalysis](https://img.shields.io/badge/Cryptanalysis-Frequency%20Analysis-blue?style=flat)](#security-analysis)
+
+> **A Python cybersecurity project for encrypting, decrypting, brute-force cracking and analysing Caesar Cipher ciphertext using English-likelihood and letter-frequency analysis.**
+
 
 ## Project Overview
 
