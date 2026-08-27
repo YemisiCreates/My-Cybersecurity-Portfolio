@@ -1,4 +1,4 @@
-```text
+```ruby
  ██████╗ █████╗ ███████╗███████╗ █████╗ ██████╗      ██████╗██╗██████╗ ██╗  ██╗███████╗██████╗ 
 ██╔════╝██╔══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗    ██╔════╝██║██╔══██╗██║  ██║██╔════╝██╔══██╗
 ██║     ███████║█████╗  ███████╗███████║██████╔╝    ██║     ██║██████╔╝███████║█████╗  ██████╔╝
@@ -34,6 +34,22 @@ This project explores classical cryptography through the implementation and anal
 I built a command-line tool that can encrypt and decrypt text, test every possible Caesar cipher key through brute-force analysis, and rank possible plaintext results to help identify the most likely original message.
 
 The project helped me develop a practical understanding of encryption, cryptanalysis, brute-force attacks, keyspaces, Python testing, command-line tools, and Git/GitHub workflow.
+
+---
+
+## Screenshots & Demo
+
+### Ranked Brute-Force Analysis
+
+![Ranked brute-force analysis](ranked-bruteforce.png)
+
+### File-Based Ciphertext Analysis
+
+![File-based Caesar cipher analysis](file-analysis.png)
+
+### Automated Testing
+
+![Caesar Cipher automated tests](tests-passed.png)
 
 ---
 
@@ -97,15 +113,18 @@ This demonstrates a basic brute-force cryptanalysis technique.
 
 ### Ranked Brute-Force Analysis
 
-Instead of requiring an analyst to manually inspect all 26 results, the project also implements ranked brute-force analysis.
-
-Example:
-
 ```bash
 python3 -m src.main ranked-brute-force "KHOOR ZRUOG"
 ```
+### Analyse File
 
-The program ranks candidates according to their likelihood of resembling English plaintext.
+Analyse cipher text stored in a file:
+
+```bash
+python3 -m src.main analyse-file EVIDENCE.TXT
+```
+
+The tool reads the cipher text from the file, tests all 26 possible Caesar cipher keys, ranks the candidates, and reports the most likely plaintext and recovered key.
 
 Example output:
 
@@ -133,6 +152,7 @@ encrypt
 decrypt
 brute-force
 ranked-brute-force
+analyse-file
 ```
 
 ### Encrypt
@@ -192,7 +212,7 @@ The test suite checks:
 Current result:
 
 ```text
-9 passed
+11 passed
 ```
 
 ---
@@ -220,6 +240,10 @@ caesar-cipher-project/
 │   └── main.py
 ├── tests/
 │   └── test_cipher.py
+├── EVIDENCE.TXT
+├── file-analysis.png
+├── ranked-bruteforce.png
+├── tests-passed.png
 ├── .gitignore
 └── README.md
 ```
