@@ -77,15 +77,15 @@ The tool follows a simple analysis pipeline:
 
 ### Ranked Brute-Force Analysis
 
-![Ranked brute-force analysis](ranked-bruteforce.png)
+![Ranked brute-force analysis](screenshots/ranked-bruteforce.png)
 
 ### File-Based Ciphertext Analysis
 
-![File-based Caesar cipher analysis](file-analysis.png)
+![File-based Caesar cipher analysis](screenshots/file-analysis.png)
 
 ### Automated Testing
 
-![Caesar Cipher automated tests](tests-passed.png)
+![Caesar Cipher automated tests](screenshots/tests-passed.png)
 
 ---
 
