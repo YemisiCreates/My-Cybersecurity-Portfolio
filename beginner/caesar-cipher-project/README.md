@@ -31,9 +31,45 @@
 
 This project explores classical cryptography through the implementation and analysis of the Caesar cipher using Python.
 
-I built a command-line tool that can encrypt and decrypt text, test every possible Caesar cipher key through brute-force analysis, and rank possible plaintext results to help identify the most likely original message.
+I built a Python command-line security analysis tool that can encrypt and decrypt text, brute-force all 26 Caesar cipher keys, rank plaintext candidates using English-likelihood and letter-frequency analysis, and analyse ciphertext directly from evidence files to identify the most likely plaintext and recovered key.
 
 The project helped me develop a practical understanding of encryption, cryptanalysis, brute-force attacks, keyspaces, Python testing, command-line tools, and Git/GitHub workflow.
+
+---
+
+## Architecture & Analysis Flow
+
+The tool follows a simple analysis pipeline:
+
+```text
+     User Input / EVIDENCE.TXT
+               ↓
+         CLI (main.py)
+               ↓
+      Caesar Cipher Engine
+          (cipher.py)
+               ↓
+      Test All 26 Shift Keys
+               ↓
+      26 Plaintext Candidates
+               ↓
+      English-Likelihood +
+    Letter-Frequency Analysis
+          (analysis.py)
+               ↓
+        Candidate Ranking
+               ↓
+      Most Likely Plaintext
+         + Recovered Key
+```
+
+### Component Roles
+
+- **`main.py`** — handles command-line input, file-based analysis, and displays results.
+- **`cipher.py`** — performs encryption, decryption, brute-force key testing, and candidate ranking.
+- **`analysis.py`** — scores candidate plaintext using English-likelihood and letter-frequency analysis.
+- **`test_cipher.py`** — automatically tests the cipher and analysis functionality.
+- **`EVIDENCE.TXT`** — provides sample ciphertext for demonstrating file-based cryptanalysis.
 
 ---
 
@@ -208,6 +244,8 @@ The test suite checks:
 - Testing of all possible Caesar cipher keys
 - Ranked brute-force identification of likely plaintext
 - Ranked brute-force coverage of all keys
+- English-likelihood scoring of plaintext candidates
+- Frequency-analysis score generation
 
 Current result:
 
@@ -272,6 +310,8 @@ Through this project, I practised:
 - Understanding plaintext, ciphertext, keys, and keyspaces
 - Performing brute-force cryptanalysis
 - Analysing and ranking possible plaintext results
+- Using English letter-frequency analysis to improve plaintext candidate ranking
+- Reading and analysing cipher text directly from evidence files
 - Building a command-line security tool
 - Writing automated tests with pytest
 - Debugging Python syntax, import, indentation, and environment issues
