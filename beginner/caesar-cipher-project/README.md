@@ -272,18 +272,31 @@ Current result:
 
 ```text
 caesar-cipher-project/
+├── learn/
+│   ├── 00-overview.md
+│   ├── 01-concepts.md
+│   ├── 02-architecture.md
+│   ├── 03-implementation.md
+│   └── 04-challenges.md
+│
+├── screenshots/
+│   ├── .gitkeep
+│   ├── file-analysis.png
+│   ├── ranked-bruteforce.png
+│   └── tests-passed.png
+│
 ├── src/
 │   ├── analysis.py
 │   ├── cipher.py
 │   └── main.py
+│
 ├── tests/
 │   └── test_cipher.py
-├── EVIDENCE.TXT
-├── file-analysis.png
-├── ranked-bruteforce.png
-├── tests-passed.png
+│
 ├── .gitignore
+├── EVIDENCE.TXT
 └── README.md
+
 ```
 
 ---
